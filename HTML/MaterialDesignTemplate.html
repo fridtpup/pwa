@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <!-- Vereiste meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hele mooie applicatie voor epische katten memes.">
+    <meta name="msapplication-TileColor" content="#55b4da">
+    <meta name="theme-color" content="#55b4da">
+    <link rel="icon" type="image/png" sizes="32x32" href="">
+    <title>Home</title>
+
+    <!-- Material.io bestanden (CSS & Font/icons)-->
+    <!-- Uitleg werking componenents: https://material.io/components?platform=web -->
+    <!-- Demo van components:         https://material-components.github.io/material-components-web-catalog/#/ -->
+    <!-- Demo en uitleg icons:        https://fonts.google.com/icons?selected=Material+Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../CSS/style.css">
+    
+    <!-- Material.io bestanden (JS en registratie componenten) -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script>const MDCBanner = mdc.banner.MDCBanner;const MDCCheckbox = mdc.checkbox.MDCCheckbox;const MDCChip = mdc.chips.MDCChip;const MDCChipSet = mdc.chips.MDCChipSet;const MDCCircularProgress = mdc.circularProgress.MDCCircularProgress;const MDCDataTable = mdc.dataTable.MDCDataTable;const MDCDialog = mdc.dialog.MDCDialog;const MDCDrawer = mdc.drawer.MDCDrawer;const MDCFloatingLabel = mdc.floatingLabel.MDCFloatingLabel;const MDCFormField = mdc.formField.MDCFormField;const MDCIconButtonToggle = mdc.iconButton.MDCIconButtonToggle;const MDCLineRipple = mdc.lineRipple.MDCLineRipple;const MDCLinearProgress = mdc.linearProgress.MDCLinearProgress;const MDCList = mdc.list.MDCList;const MDCMenu = mdc.menu.MDCMenu;const MDCMenuSurface = mdc.menuSurface.MDCMenuSurface;const MDCNotchedOutline = mdc.notchedOutline.MDCNotchedOutline;const MDCRadio = mdc.radio.MDCRadio;const MDCRipple = mdc.ripple.MDCRipple;const MDCSegmentedButton = mdc.segmentedButton.MDCSegmentedButton;const MDCSelect = mdc.select.MDCSelect;const MDCSlider = mdc.slider.MDCSlider;const MDCSnackbar = mdc.snackbar.MDCSnackbar;const MDCSwitch = mdc.switchControl.MDCSwitch;const MDCTabBar = mdc.tabBar.MDCTabBar;const MDCTextField = mdc.textField.MDCTextField;const MDCTooltip = mdc.tooltip.MDCTooltip;const MDCTopAppBar = mdc.topAppBar.MDCTopAppBar;</script>
+
+    <script>
+        window.addEventListener("load", () => {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("service-worker.js");
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button id="menu" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+                <span class="mdc-top-app-bar__title">Home</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+            </section>
+        </div>
+    </header>
+    <!-- menu drawer -->
+    <aside class="mdc-drawer mdc-drawer--modal">
+        <div class="mdc-drawer__content">
+            <img class="navBarImg" src="https://mp.reshift.nl/zoom/e84a7ed2-b988-4f58-b74d-0722eed4dfd6-mooi-plaatje.jpeg?w=460" alt="">
+            <nav class="mdc-list">
+                <div class="listItem">
+                    <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+                        <span class="mdc-list-item__ripple"></span>
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                        <span class="mdc-list-item__text">Inbox</span>
+                    </a>
+                </div>
+                <div class="listItem">
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                    <span class="mdc-list-item__text">Outgoing</span>
+                    </a>
+                </div>
+                <div class="listItem">
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                    <span class="mdc-list-item__text">Drafts</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="mdc-drawer-scrim"></div>  
+    <!-- Main content -->
+    <main class="mdc-top-app-bar--fixed-adjust">
+        <!-- Tabs -->
+        <div class="mdc-tab-bar" role="tablist">
+            <div class="mdc-tab-scroller">
+                <div class="mdc-tab-scroller__scroll-area">
+                    <div class="mdc-tab-scroller__scroll-content">
+                        <!-- Memes button -->
+                        <button id="memes" class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">Memes</span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <!-- Fails button -->
+                        <button id="fails" class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">Fails</span>
+                            </span>
+                            <span class="mdc-tab-indicator">
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <!-- Tweets button -->
+                        <button id="tweets" class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">Tweets</span>
+                            </span>
+                            <span class="mdc-tab-indicator"> <!-- req span -->
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                        <button id="ket" class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">Kets</span>
+                            </span>
+                            <span class="mdc-tab-indicator"> <!-- req span -->
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                            </span>
+                            <span class="mdc-tab__ripple"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Image holder -->
+        <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
+            <li class="memes mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFEIkXkzuUl6v6CyMcNWX0kWTBWPnVsD0i4QB7gHW53A&s" 
+                    alt="Kitty can fight dogs!"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="tweets mdc-image-list__item">
+                <img    
+                    class="mdc-image-list__image" 
+                    src="https://i.pinimg.com/236x/6f/ff/27/6fff27efeb2a1fce5627217e2766e659.jpg"   
+                    alt="When you're not okay"   
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="ket mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="../Images/ket.png" 
+                    alt="First ket"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="memes mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://i.pinimg.com/564x/95/0a/2a/950a2ae627971a42a86b7a9b8fc70108.jpg" 
+                    alt="When you gotta stay nice"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="tweets mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDhgLIl3CeOb6DR7mAm7Z1OsyCYYHvoPG-2XwE26Tfag&s" 
+                    alt="Inspirational quote #1"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="ket mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="../Images/ket.png" 
+                    alt="Second ket"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="memes mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://blog.cvcavets.com/hs-fs/hubfs/9.jpg?width=334&name=9.jpg" 
+                    alt="Cat gone cray cray~"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="fails mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image"
+                    src="https://i.ytimg.com/vi/oOFHpiIemlI/maxresdefault.jpg"
+                    alt="Got your nose!"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="tweets mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://i.chzbgr.com/full/9680601600/h9C859D67/juniormaruwa-bottle-everything-up-until-die-stress-induced-heart-failure-our-40s-like-real-men" 
+                    alt="Basically mens life"
+                >                
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="ket mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="../Images/ket.png" 
+                    alt="Third ket"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="memes mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://img.freepik.com/free-vector/funny-serious-cat-animal-meme_23-2148974916.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1713312000&semt=ais" 
+                    alt="Dont mess with this cat..."
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="fails mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://i.ytimg.com/vi/94PLgLKcGW8/maxresdefault.jpg" 
+                    alt="Cat being thirsty af"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="tweets mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://img.buzzfeed.com/buzzfeed-static/static/2017-09/11/19/asset/buzzfeed-prod-fastlane-03/sub-buzz-25299-1505171763-2.png?downsize=700%3A%2A&output-quality=auto&output-format=auto" 
+                    alt="When life hits..."
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="ket mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="../Images/ket.png" 
+                    alt="Fourth ket"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="fails mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://i.imgflip.com/7o71r.jpg" 
+                    alt="This cat loves water?"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="tweets mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="https://i.kym-cdn.com/photos/images/original/001/987/872/664" 
+                    alt="When depression is your only friend..."
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+            <li class="ket mdc-image-list__item">
+                <img 
+                    class="mdc-image-list__image" 
+                    src="../Images/ket.png" 
+                    alt="Fifth ket"
+                >
+                <div class="mdc-image-list__supporting"></div>
+            </li>
+        </ul>
+    </main>
+    <!-- Sheets -->
+    <section class="sheet sheet-out-of-view">
+        <!-- Sheet header -->
+        <header class="mdc-top-app-bar">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <button id="close" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">close</button>
+                    <span class="mdc-top-app-bar__title">Image</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+                </section>
+            </div>
+        </header>
+        <!-- Sheet main -->
+        <main>
+            <img src="../Images/ket.png" alt="ket">
+        </main>
+        <!-- Sheet footer -->
+        <footer>
+            <div class="mdc-tab-bar" role="tablist">
+                <div class="mdc-tab-scroller">
+                    <div class="mdc-tab-scroller__scroll-area">
+                        <div class="mdc-tab-scroller__scroll-content">
+                            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                                <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">thumb_up</span>
+                                </span>
+                                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                </span>
+                                <span class="mdc-tab__ripple"></span>
+                            </button>
+                            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                                <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+                                </span>
+                                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                </span>
+                                <span class="mdc-tab__ripple"></span>
+                            </button>
+                            <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                                <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon material-icons" aria-hidden="true">thumb_down</span>
+                                </span>
+                                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                </span>
+                                <span class="mdc-tab__ripple"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+</body>
+<script src="../JS/menuDrawer.js"></script>
+<script src="../JS/tabs.js"></script>
+<script src="../JS/openSheet.js"></script>
+
+</body>
+
+</html>
